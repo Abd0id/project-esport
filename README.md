@@ -16,27 +16,27 @@
 
 #### 2. tournois.html (Page Tournois)
 
-    Header avec navigation
-    Liste complète des tournois
-    Informations détaillées sur chaque tournoi
-    Footer
+*   Header avec navigation
+*   Liste complète des tournois
+*   Informations détaillées sur chaque tournoi
+*   Footer
 
 #### 3. equipes.html (Page Équipes)
 
-    Header avec navigation
-    Grille de toutes les équipes
-    Informations sur le classement
-    Footer
+*   Header avec navigation
+*   Grille de toutes les équipes
+*   Informations sur le classement
+*   Footer
 
 #### 4. actualites.html (Page Actualités)
 
-    Header avec navigation
-    Liste complète des articles de news
-    Footer
+*   Header avec navigation
+*   Liste complète des articles de news
+*   Footer
 
 #### 5. contact.html (Page Contact - BONUS)
 
-    Header avec navigation
-    Formulaire de contact (structure HTML uniquement, pas de traitement)
-    Informations de contact
-    Footer
+*   Header avec navigation
+*   Formulaire de contact (structure HTML uniquement, pas de traitement)
+*   Informations de contact
+*   Footer
