@@ -35,7 +35,7 @@ body {
   
 }
 
-.stiky {
+.sticky {
   display: flex;
   flex-direction: column;
 }
