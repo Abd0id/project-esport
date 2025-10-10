@@ -4,309 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ProGaming Arena — E-Sport Platform</title>
-    <meta name="description" content="Plateforme e-sport: tournois, équipes, actualités et contact — ProGaming Arena." />
-
-    <style>
-      /*
-        ProGaming Arena — Single page (no JS)
-        - Semantic, accessible, responsive
-        - Embedded CSS per user request (single file)
-      */
-
-      :root {
-        --bg: #0b0e13;
-        --panel: #121722;
-        --panel-2: #151b29;
-        --text: #e6edf6;
-        --muted: #9bb0c9;
-        --brand: #6c8dff;
-        --brand-2: #7af0ff;
-        --accent: #18d26e;
-        --danger: #ff6b6b;
-        --warning: #ffc857;
-        --outline: #2a3550;
-        --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
-        --radius: 14px;
-        --radius-sm: 10px;
-        --container: 1200px;
-      }
-
-      html, body {
-        height: 100%;
-        background: linear-gradient(180deg, #0b0e13 0%, #0e1320 100%);
-        color: var(--text);
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        line-height: 1.5;
-      }
-
-      * { box-sizing: border-box; }
-
-      a { color: inherit; text-decoration: none; }
-      img { max-width: 100%; height: auto; display: block; }
-
-      .container {
-        width: min(100% - 2rem, var(--container));
-        margin-inline: auto;
-      }
-
-      /* Header */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(9, 12, 19, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--outline);
-      }
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.75rem 0;
-      }
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-weight: 800;
-        letter-spacing: 0.2px;
-      }
-      .brand-badge {
-        width: 34px;
-        height: 34px;
-        border-radius: 8px;
-        background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
-        display: grid;
-        place-items: center;
-        box-shadow: var(--shadow);
-      }
-      .brand-badge span { font-size: 0.95rem; font-weight: 900; color: #0b0e13; }
-      .brand em { color: var(--brand-2); font-style: normal; }
-
-      .nav-links {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-      }
-      .nav-links a {
-        padding: 0.55rem 0.85rem;
-        border-radius: 10px;
-        color: var(--muted);
-        border: 1px solid transparent;
-        transition: 200ms ease;
-      }
-      .nav-links a:hover { color: var(--text); border-color: var(--outline); background: rgba(108, 141, 255, 0.06); }
-      .nav-cta {
-        padding: 0.55rem 0.9rem;
-        border-radius: 10px;
-        background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
-        color: #0b0e13;
-        font-weight: 700;
-        border: 0;
-      }
-
-      /* Hero */
-      .hero {
-        position: relative;
-        padding: 3.5rem 0 2.75rem;
-        background:
-          radial-gradient(1200px 400px at 70% 0%, rgba(124, 160, 255, 0.08), transparent 60%),
-          radial-gradient(800px 260px at 10% 0%, rgba(26, 234, 255, 0.08), transparent 65%);
-        overflow: hidden;
-      }
-      .hero-inner {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 2rem;
-        align-items: center;
-      }
-      .eyebrow { color: var(--brand-2); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.85rem; }
-      h1 {
-        margin: 0.4rem 0 0.8rem;
-        font-size: clamp(2rem, 3vw + 1rem, 3.2rem);
-        line-height: 1.15;
-      }
-      .lead { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
-      .hero-cta { margin-top: 1.25rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1rem;
-        border-radius: 12px;
-        border: 1px solid var(--outline);
-        color: var(--text);
-        background: var(--panel);
-        transition: 200ms ease;
-      }
-      .btn:hover { transform: translateY(-1px); border-color: var(--brand); box-shadow: 0 8px 22px rgba(108, 141, 255, 0.18); }
-      .btn.primary { background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%); color: #0b0e13; border: 0; font-weight: 800; }
-
-      .hero-card {
-        background: linear-gradient(180deg, rgba(21, 27, 41, 0.7), rgba(18, 23, 34, 0.9));
-        border: 1px solid var(--outline);
-        border-radius: var(--radius);
-        padding: 1rem;
-        box-shadow: var(--shadow);
-      }
-      .hero-media {
-        aspect-ratio: 16 / 9;
-        border-radius: 12px;
-        background: linear-gradient(135deg, rgba(108, 141, 255, 0.25), rgba(122, 240, 255, 0.18));
-        border: 1px solid var(--outline);
-        position: relative;
-        overflow: hidden;
-      }
-      .hero-media::after {
-        content: "E-SPORT";
-        position: absolute; inset: 0;
-        display: grid; place-items: center;
-        font-weight: 800; letter-spacing: 0.2em; color: rgba(230, 237, 246, 0.08);
-        font-size: clamp(3rem, 6vw + 1rem, 7rem);
-      }
-
-      /* Sections overview */
-      section { scroll-margin-top: 84px; }
-      .section {
-        padding: 2.2rem 0;
-      }
-      .section-head {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 1rem;
-        margin-bottom: 1.25rem;
-      }
-      .section-head h2 { margin: 0; font-size: clamp(1.4rem, 1.4vw + 1rem, 2rem); }
-      .section-head p { margin: 0; color: var(--muted); }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-      }
-      .card {
-        background: linear-gradient(180deg, rgba(18, 23, 34, 0.7), rgba(16, 20, 30, 0.9));
-        border: 1px solid var(--outline);
-        border-radius: var(--radius-sm);
-        padding: 1rem;
-        box-shadow: var(--shadow);
-      }
-      .card h3 { margin-top: 0.25rem; margin-bottom: 0.35rem; }
-      .meta { color: var(--muted); font-size: 0.9rem; }
-
-      /* Dedicated sections */
-      .list {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-      .row {
-        display: grid;
-        grid-template-columns: 1.4fr 0.8fr 0.8fr 0.6fr;
-        gap: 0.75rem;
-        align-items: center;
-        padding: 0.75rem;
-        border: 1px solid var(--outline);
-        border-radius: 10px;
-        background: var(--panel-2);
-      }
-      .row strong { font-weight: 800; }
-      .badge {
-        display: inline-flex; align-items: center; gap: 0.4rem;
-        border: 1px solid var(--outline);
-        background: rgba(108, 141, 255, 0.08);
-        color: var(--brand-2);
-        padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
-      }
-
-      /* Teams grid */
-      .teams {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-      }
-      .team {
-        display: grid; gap: 0.6rem;
-        place-items: start;
-        background: var(--panel-2);
-        border: 1px solid var(--outline);
-        border-radius: var(--radius-sm);
-        padding: 1rem;
-      }
-      .team-avatar { width: 54px; height: 54px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #0b0e13; font-weight: 900; }
-      .rank { color: var(--accent); font-weight: 800; }
-
-      /* News */
-      .news { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .news .card { display: grid; grid-template-columns: 120px 1fr; gap: 0.9rem; align-items: center; }
-      .thumb { width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(108,141,255,0.16)); border: 1px solid var(--outline); }
-
-      /* Contact */
-      .contact {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
-      form { display: grid; gap: 0.75rem; }
-      label { font-weight: 700; }
-      input, textarea, select {
-        width: 100%;
-        padding: 0.75rem;
-        border-radius: 10px;
-        border: 1px solid var(--outline);
-        background: #0f1522;
-        color: var(--text);
-      }
-      textarea { min-height: 140px; resize: vertical; }
-      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-
-      /* Footer */
-      footer {
-        margin-top: 2rem;
-        border-top: 1px solid var(--outline);
-        background: rgba(9, 12, 19, 0.6);
-      }
-      .footer-inner {
-        display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; padding: 1.25rem 0;
-      }
-      .footer-links { display: flex; gap: 1rem; color: var(--muted); }
-
-      /* Utilities */
-      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
-      .muted { color: var(--muted); }
-
-      /* Responsive */
-      @media (max-width: 1000px) {
-        .hero-inner { grid-template-columns: 1fr; }
-        .grid { grid-template-columns: repeat(2, 1fr); }
-        .teams { grid-template-columns: repeat(3, 1fr); }
-        .news { grid-template-columns: 1fr; }
-      }
-      @media (max-width: 700px) {
-        .nav { flex-wrap: wrap; gap: 0.75rem; }
-        .nav-links { width: 100%; justify-content: space-between; }
-        .grid { grid-template-columns: 1fr; }
-        .row { grid-template-columns: 1fr; align-items: start; }
-        .teams { grid-template-columns: repeat(2, 1fr); }
-        .contact { grid-template-columns: 1fr; }
-        .form-row { grid-template-columns: 1fr; }
-      }
-    </style>
+    <meta
+      name="description"
+      content="Plateforme e-sport: tournois, équipes, actualités et contact — ProGaming Arena."
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Header / Navigation -->
     <header>
-      <div class="container nav" role="navigation" aria-label="Navigation principale">
+      <div
+        class="container nav"
+        role="navigation"
+        aria-label="Navigation principale"
+      >
         <a class="brand" href="#hero" aria-label="Accueil ProGaming Arena">
           <span class="brand-badge" aria-hidden="true"><span>PG</span></span>
           ProGaming <em>Arena</em>
         </a>
         <nav class="nav-links" aria-label="Sections">
-          <a href="#tournois">Tournois</a>
-          <a href="#equipes">Équipes</a>
-          <a href="#actualites">Actualités</a>
-          <a class="nav-cta" href="#contact">Contact</a>
+          <a href="tournois.html">Tournois</a>
+          <a href="equipes.html">Équipes</a>
+          <a href="actualites.html">Actualités</a>
+          <a class="btn primary" href="contact.html">Contact</a>
         </nav>
       </div>
     </header>
@@ -317,15 +37,23 @@
         <div>
           <p class="eyebrow">Plateforme e-sport</p>
           <h1>Rejoignez l'arène. Jouez. Progressez. Gagnez.</h1>
-          <p class="lead">ProGaming Arena centralise les tournois, les classements d'équipes et les actus e-sport. Explorez, formez votre équipe et affrontez les meilleures line-ups.</p>
+          <p class="lead">
+            ProGaming Arena centralise les tournois, les classements d'équipes
+            et les actus e-sport. Explorez, formez votre équipe et affrontez les
+            meilleures line-ups.
+          </p>
           <div class="hero-cta">
-            <a class="btn primary" href="#tournois">Voir les tournois</a>
-            <a class="btn" href="#equipes">Classement équipes</a>
-            <a class="btn" href="#actualites">Dernières actus</a>
+            <a class="btn primary" href="tournois.html">Voir les tournois</a>
+            <a class="btn" href="equipes.html">Classement équipes</a>
+            <a class="btn" href="actualites.html">Dernières actus</a>
           </div>
         </div>
         <aside class="hero-card" aria-label="Visuel de mise en avant">
-          <div class="hero-media" role="img" aria-label="Visuel e-sport abstrait"></div>
+          <div
+            class="hero-media"
+            role="img"
+            aria-label="Visuel e-sport abstrait"
+          ></div>
         </aside>
       </div>
     </main>
@@ -342,235 +70,51 @@
             <span class="badge" aria-label="En vedette">★ En vedette</span>
             <h3>Tournoi Masters — Octobre</h3>
             <p class="meta">Dotation: 15 000€ · 32 équipes · Format: BO3</p>
-            <p class="muted">Qualifications ouvertes, finales en LAN. Rejoignez le bracket et démarquez-vous.</p>
-            <p><a class="btn" href="#tournois">Tous les tournois</a></p>
+            <p class="muted">
+              Qualifications ouvertes, finales en LAN. Rejoignez le bracket et
+              démarquez-vous.
+            </p>
+            <p><a class="btn" href="tournois.html">Tous les tournois</a></p>
           </article>
           <article class="card" role="listitem">
             <span class="badge">Top</span>
             <h3>Top Équipes</h3>
             <p class="meta">#1 NovaStrike · #2 AetherX · #3 CrypTides</p>
-            <p class="muted">Le classement se met à jour après chaque rencontre homologuée.</p>
-            <p><a class="btn" href="#equipes">Voir le classement</a></p>
+            <p class="muted">
+              Le classement se met à jour après chaque rencontre homologuée.
+            </p>
+            <p><a class="btn" href="equipes.html">Voir le classement</a></p>
           </article>
           <article class="card" role="listitem">
             <span class="badge">News</span>
             <h3>Patch Notes — S13</h3>
-            <p class="meta">Équilibrages majeurs · Nouvelle carte · Anti-cheat renforcé</p>
-            <p class="muted">Découvrez l'impact sur la méta compétitive et préparez vos strats.</p>
-            <p><a class="btn" href="#actualites">Lire les actus</a></p>
+            <p class="meta">
+              Équilibrages majeurs · Nouvelle carte · Anti-cheat renforcé
+            </p>
+            <p class="muted">
+              Découvrez l'impact sur la méta compétitive et préparez vos strats.
+            </p>
+            <p><a class="btn" href="actualites.html">Lire les actus</a></p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- Tournois -->
-    <section id="tournois" class="section" aria-labelledby="tournois-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="tournois-title">Tournois</h2>
-          <p>Inscrivez-vous, suivez les brackets, et affrontez les meilleurs.</p>
-        </div>
-        <div class="list" role="list">
-          <div class="row" role="listitem">
-            <div>
-              <strong>Masters Open — Oct.</strong>
-              <div class="meta">Inscription jusqu'au 15/10 · EU</div>
-            </div>
-            <div>
-              <span class="badge">BO3</span>
-            </div>
-            <div>
-              <span class="badge" aria-label="Dotation">15 000€</span>
-            </div>
-            <div class="muted">32 équipes</div>
-          </div>
-          <div class="row" role="listitem">
-            <div>
-              <strong>Rookie Cup — S13</strong>
-              <div class="meta">Inscription jusqu'au 28/10 · FR</div>
-            </div>
-            <div>
-              <span class="badge">BO1</span>
-            </div>
-            <div>
-              <span class="badge" aria-label="Dotation">2 500€</span>
-            </div>
-            <div class="muted">64 équipes</div>
-          </div>
-          <div class="row" role="listitem">
-            <div>
-              <strong>Elite Invitational</strong>
-              <div class="meta">Sur invitation · Global</div>
-            </div>
-            <div>
-              <span class="badge">BO5</span>
-            </div>
-            <div>
-              <span class="badge" aria-label="Dotation">50 000€</span>
-            </div>
-            <div class="muted">16 équipes</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Équipes -->
-    <section id="equipes" class="section" aria-labelledby="equipes-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="equipes-title">Équipes</h2>
-          <p>Classement actuel de la saison.</p>
-        </div>
-        <div class="teams" role="list">
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">NS</div>
-            <h3>NovaStrike <span class="rank">#1</span></h3>
-            <p class="meta">W-L: 18-4 · Forme: WWWLW</p>
-          </article>
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">AX</div>
-            <h3>AetherX <span class="rank">#2</span></h3>
-            <p class="meta">W-L: 16-6 · Forme: WLWWW</p>
-          </article>
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">CT</div>
-            <h3>CrypTides <span class="rank">#3</span></h3>
-            <p class="meta">W-L: 15-7 · Forme: LWWWL</p>
-          </article>
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">RF</div>
-            <h3>RiftFox <span class="rank">#4</span></h3>
-            <p class="meta">W-L: 13-8 · Forme: WWLLW</p>
-          </article>
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">HV</div>
-            <h3>HyperVoid <span class="rank">#5</span></h3>
-            <p class="meta">W-L: 12-9 · Forme: WLWLL</p>
-          </article>
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">SG</div>
-            <h3>StarGale <span class="rank">#6</span></h3>
-            <p class="meta">W-L: 11-10 · Forme: LWWLL</p>
-          </article>
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">BL</div>
-            <h3>BlueLynx <span class="rank">#7</span></h3>
-            <p class="meta">W-L: 10-11 · Forme: WLWLL</p>
-          </article>
-          <article class="team" role="listitem">
-            <div class="team-avatar" aria-hidden="true">QT</div>
-            <h3>QuantumTide <span class="rank">#8</span></h3>
-            <p class="meta">W-L: 9-12 · Forme: LLLWW</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Actualités -->
-    <section id="actualites" class="section" aria-labelledby="actus-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="actus-title">Actualités</h2>
-          <p>Restez informé de la scène compétitive.</p>
-        </div>
-        <div class="news" role="list">
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <div>
-              <h3>Patch S13: méta renversée</h3>
-              <p class="meta">Hier · par R. Lefèvre</p>
-              <p class="muted">De nouveaux nerfs sur les classes burst et une carte orientée contrôle de zone.</p>
-            </div>
-          </article>
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <div>
-              <h3>Interview: NovaStrike</h3>
-              <p class="meta">Il y a 3 jours · par M. Diallo</p>
-              <p class="muted">Les secrets d'entraînement qui expliquent leur constance au plus haut niveau.</p>
-            </div>
-          </article>
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <div>
-              <h3>Calendrier LAN — Q4</h3>
-              <p class="meta">Il y a 1 semaine · par L. Bernard</p>
-              <p class="muted">Trois événements majeurs confirmés en Europe, dont une étape à Paris.</p>
-            </div>
-          </article>
-          <article class="card" role="listitem">
-            <div class="thumb" aria-hidden="true"></div>
-            <div>
-              <h3>Guide stratégique: contrôle</h3>
-              <p class="meta">Il y a 2 semaines · par P. Nguyen</p>
-              <p class="muted">Optimisez vos prises d'objectifs avec des timings précis et des utilitaires clés.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact (Bonus) -->
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <div class="container contact">
-        <div>
-          <div class="section-head">
-            <h2 id="contact-title">Contact</h2>
-            <p>Une question, une proposition de partenariat ? Écrivez-nous.</p>
-          </div>
-          <form action="#" method="post" aria-describedby="contact-help">
-            <div class="form-row">
-              <div>
-                <label for="name">Nom</label>
-                <input id="name" name="name" type="text" placeholder="Votre nom" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="vous@exemple.com" required />
-              </div>
-            </div>
-            <div>
-              <label for="topic">Sujet</label>
-              <select id="topic" name="topic">
-                <option>Support</option>
-                <option>Partenariat</option>
-                <option>Organisation tournoi</option>
-              </select>
-            </div>
-            <div>
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Votre message…" required></textarea>
-            </div>
-            <p id="contact-help" class="sr-only">Ce formulaire est une démo statique, pas d'envoi.</p>
-            <div>
-              <button class="btn primary" type="submit" aria-disabled="true">Envoyer</button>
-              <span class="muted" style="margin-left:0.5rem;">(démo — sans traitement)</span>
-            </div>
-          </form>
-        </div>
-        <aside class="card" aria-label="Informations de contact">
-          <h3>Informations</h3>
-          <p class="muted">ProGaming Arena<br/>1, rue de l'Arène — 75000 Paris</p>
-          <p class="muted">contact@progaming-arena.gg<br/>+33 1 23 45 67 89</p>
-          <p>
-            <span class="badge">Support 9h–18h CET</span>
-          </p>
-        </aside>
       </div>
     </section>
 
     <!-- Footer -->
     <footer role="contentinfo">
       <div class="container footer-inner">
-        <p class="muted">© <span aria-label="année">2025</span> ProGaming Arena. Tous droits réservés.</p>
+        <p class="muted">
+          © <span aria-label="année">2025</span> ProGaming Arena. Tous droits
+          réservés.
+        </p>
         <nav class="footer-links" aria-label="Liens secondaires">
-          <a href="#hero">Accueil</a>
-          <a href="#tournois">Tournois</a>
-          <a href="#equipes">Équipes</a>
-          <a href="#actualites">Actualités</a>
-          <a href="#contact">Contact</a>
+          <a href="index.html">Accueil</a>
+          <a href="tournois.html">Tournois</a>
+          <a href="equipes.html">Équipes</a>
+          <a href="actualites.html">Actualités</a>
+          <a href="contact.html">Contact</a>
         </nav>
       </div>
     </footer>
   </body>
-  </html>
+</html>

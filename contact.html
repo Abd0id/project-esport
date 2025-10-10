@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header>
+      <div
+        class="container nav"
+        role="navigation"
+        aria-label="Navigation principale"
+      >
+        <a class="brand" href="index.html" aria-label="Accueil ProGaming Arena">
+          <span class="brand-badge" aria-hidden="true"><span>PG</span></span>
+          ProGaming <em>Arena</em>
+        </a>
+        <nav class="nav-links" aria-label="Sections">
+          <a href="tournois.html">Tournois</a>
+          <a href="equipes.html">Équipes</a>
+          <a href="actualites.html">Actualités</a>
+          <a class="btn primary" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Contact (Bonus) -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container contact">
+        <div>
+          <div class="section-head">
+            <h2 id="contact-title">Contact</h2>
+            <p>Une question, une proposition de partenariat ? Écrivez-nous.</p>
+          </div>
+          <form action="#" method="post" aria-describedby="contact-help">
+            <div class="form-row">
+              <div>
+                <label for="name">Nom</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Votre nom"
+                  required
+                />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="vous@exemple.com"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <label for="topic">Sujet</label>
+              <select id="topic" name="topic">
+                <option>Support</option>
+                <option>Partenariat</option>
+                <option>Organisation tournoi</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Votre message…"
+                required
+              ></textarea>
+            </div>
+            <p id="contact-help" class="sr-only">
+              Ce formulaire est une démo statique, pas d'envoi.
+            </p>
+            <div>
+              <button class="btn primary" type="submit" aria-disabled="true">
+                Envoyer
+              </button>
+              <span class="muted" style="margin-left: 0.5rem"
+                >(démo — sans traitement)</span
+              >
+            </div>
+          </form>
+        </div>
+        <aside class="card" aria-label="Informations de contact">
+          <h3>Informations</h3>
+          <p class="muted">
+            ProGaming Arena<br />1, rue de l'Arène — 75000 Paris
+          </p>
+          <p class="muted">contact@progaming-arena.gg<br />+33 1 23 45 67 89</p>
+          <p>
+            <span class="badge">Support 9h–18h CET</span>
+          </p>
+        </aside>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+      <div class="container footer-inner">
+        <p class="muted">
+          © <span aria-label="année">2025</span> ProGaming Arena. Tous droits
+          réservés.
+        </p>
+        <nav class="footer-links" aria-label="Liens secondaires">
+          <a href="index.html">Accueil</a>
+          <a href="tournois.html">Tournois</a>
+          <a href="equipes.html">Équipes</a>
+          <a href="actualites.html">Actualités</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
