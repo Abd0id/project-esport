@@ -6,6 +6,8 @@
 
 ### **5 distinct HTML pages** with their associated CSS:
 
+<a href="https://abd0id.github.io/project-esport/">lien de brief</a>
+
 #### 1. index.html (Page d'accueil)
 
 *   Header avec navigation
